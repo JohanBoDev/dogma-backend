@@ -1,0 +1,529 @@
+{
+	"info": {
+		"_postman_id": "14b183ea-d0fb-4125-889c-40cd4773bf5f",
+		"name": "DOGMA API",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "36435827"
+	},
+	"item": [
+		{
+			"name": "Productos",
+			"item": [
+				{
+					"name": "Crear producto",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"codigo\": \"CREM100\",\r\n  \"nombre\": \"Crema de Leche\",\r\n  \"embalaje\": \"Caja plástica\",\r\n  \"tamaño_cubeta\": \"2L\",\r\n  \"unidad\": \"Litros\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/productos/"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar producto entrante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"producto_id\": 1,\r\n  \"cantidad\": 10,\r\n  \"fecha_vencimiento\": \"2022-12-01\",\r\n  \"lote\": \"L0012-2025\",\r\n  \"planta_id\": 1,\r\n  \"numero_transporte\": \"NT-3456\",\r\n  \"colaborador_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/productos/entrantes"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrar confirmacion de producto entrante",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"producto_id\": 1,\r\n  \"lote\": \"L0012-2025\",\r\n  \"cantidad\": 10,\r\n  \"estacion_id\": 3,\r\n  \"colaborador_id\": 2\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/productos/confirmacion"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Colaboradores",
+			"item": [
+				{
+					"name": "Obtener colaboradores",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/colaboradores"
+					},
+					"response": []
+				},
+				{
+					"name": "Crear colaborador",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre_completo\": \"Valentina Romero\",\r\n  \"cedula\": \"07587324\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/colaboradores/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Plantas",
+			"item": [
+				{
+					"name": "Crear planta",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\" : \"Planta Sur\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/plantas/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener plantas",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/plantas/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Estaciones",
+			"item": [
+				{
+					"name": "Crear estaciones",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre\": \"\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/estaciones/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener estaciones",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/estaciones/"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Auth",
+			"item": [
+				{
+					"name": "Iniciar sesion",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n    \"nombre_usuario\": \"johan\",\r\n    \"contraseña\": \"123456\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/auth/login"
+					},
+					"response": []
+				},
+				{
+					"name": "Registrarse",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"nombre_usuario\": \"johan\",\r\n  \"contraseña\": \"123456\",\r\n  \"rol_id\": 2,\r\n  \"colaborador_id\": 1\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/auth/registro"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Separacion",
+			"item": [
+				{
+					"name": "Generar consolidado de separacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0NjI1MTc2MSwiZXhwIjoxNzQ2MjY2MTYxfQ.o5srI2BfaUtUJzCYLoBV3CvaGpNdHl986qbutsHaOWQ"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estacion_id\": 3,\r\n  \"productos\": [\r\n    {\r\n      \"producto_id\": 1,\r\n      \"cantidad\": 10\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/separacion/consolidado"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los consolidados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2NDU0MSwiZXhwIjoxNzQ2Nzc4OTQxfQ.6Uk0YsjxgQp1ajcjPa1BRk32hNXHm-SC9LbXA3ZGYyY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/separacion/consolidado"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un consolidado por estación",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2NDU0MSwiZXhwIjoxNzQ2Nzc4OTQxfQ.6Uk0YsjxgQp1ajcjPa1BRk32hNXHm-SC9LbXA3ZGYyY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/separacion/consolidado/3"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Despachos",
+			"item": [
+				{
+					"name": "Crear un despacho",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2NDU0MSwiZXhwIjoxNzQ2Nzc4OTQxfQ.6Uk0YsjxgQp1ajcjPa1BRk32hNXHm-SC9LbXA3ZGYyY"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"zona\": \"Centro\",\r\n  \"productos\": [\r\n    {\r\n      \"producto_id\": 2,\r\n      \"lote\": \"YOG456\",\r\n      \"estacion_id\": 3,\r\n      \"cantidad\": 10\r\n    }\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/despachos/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los despachos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2NDU0MSwiZXhwIjoxNzQ2Nzc4OTQxfQ.6Uk0YsjxgQp1ajcjPa1BRk32hNXHm-SC9LbXA3ZGYyY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/despachos"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener un despacho por estacion",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2NDU0MSwiZXhwIjoxNzQ2Nzc4OTQxfQ.6Uk0YsjxgQp1ajcjPa1BRk32hNXHm-SC9LbXA3ZGYyY"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/despachos/3"
+					},
+					"response": []
+				},
+				{
+					"name": "Actualizar el estado de un despacho:",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2NDU0MSwiZXhwIjoxNzQ2Nzc4OTQxfQ.6Uk0YsjxgQp1ajcjPa1BRk32hNXHm-SC9LbXA3ZGYyY"
+							}
+						},
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"estado\": \"Enviado\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/despachos/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Devoluciones",
+			"item": [
+				{
+					"name": "Crear una Devolución",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"producto_id\": 1,\r\n  \"lote\": \"L-2025\",\r\n  \"cantidad\": 10,\r\n  \"estado_retorno\": \"Bueno\",\r\n  \"motivo\": \"Cliente devolvió por defecto\",\r\n  \"colaborador_id\": 1,\r\n  \"estacion_id\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/devoluciones/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todas las devoluciones",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/devoluciones/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener devoluciones por producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/devoluciones/producto/2"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Productos dañados",
+			"item": [
+				{
+					"name": "Registrar producto dañado",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"producto_id\": 1,\r\n  \"lote\": \"L-2025\",\r\n  \"cantidad\": 5,\r\n  \"motivo\": \"Daño\",\r\n  \"proceso_afectado\": \"Transporte\",\r\n  \"colaborador_id\": 1,\r\n  \"estacion_id\": 3\r\n}\r\n",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "http://localhost:3000/api/productos-danados/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los productos dañados",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/productos-danados"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener productos dañados por producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/productos-danados/producto/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Conteos fisicos",
+			"item": [
+				{
+					"name": "Crear un conteo fisico",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "POST",
+						"header": [],
+						"url": "http://localhost:3000/api/conteos-fisicos/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los conteos",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/conteo-fisico/"
+					},
+					"response": []
+				},
+				{
+					"name": "Obtener todos los conteos por id de producto",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": {
+								"token": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwibm9tYnJlX3VzdWFyaW8iOiJqb2hhbiIsInJvbCI6ImzDrWRlciIsImlhdCI6MTc0Njc2OTUwOSwiZXhwIjoxNzQ2NzgzOTA5fQ.z7bGgEKA8OVWTEF3r5GXrxzu8bgIo0_UQaW5g_2nmXs"
+							}
+						},
+						"method": "GET",
+						"header": [],
+						"url": "http://localhost:3000/api/conteo-fisico/producto/1"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Inventario",
+			"item": [
+				{
+					"name": "New Request",
+					"request": {
+						"method": "GET",
+						"header": []
+					},
+					"response": []
+				}
+			]
+		}
+	]
+}
