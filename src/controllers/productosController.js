@@ -5,18 +5,41 @@ export const registrarProductoEntrante = async (req, res) => {
     const { producto_id, cantidad, fecha_vencimiento, lote, planta_id, numero_transporte, colaborador_id } = req.body;
 
     try {
+        // 1️⃣ Validar que la cantidad sea mayor a 0
         if (cantidad <= 0) {
-            res.status(400).json({ message: "La cantidad debe ser mayor a 0" })
-            return
+            return res.status(400).json({ message: "La cantidad debe ser mayor a 0" });
         }
-        const respuesta = await db.query(`INSERT INTO entradas (producto_id,cantidad, fecha_vencimiento, lote, planta_id, numero_transporte, colaborador_id) VALUES (?, ?, ?, ?, ?, ?, ?) `, [producto_id, cantidad, fecha_vencimiento, lote, planta_id, numero_transporte, colaborador_id]);
-        res.status(201).json({ message: "Producto registrado", id: respuesta.insertId });
-    }
-     catch (error) {
+
+        // 2️⃣ Verificar que el producto existe
+        const [producto] = await db.query(`SELECT * FROM productos WHERE id = ?`, [producto_id]);
+
+        if (producto.length === 0) {
+            return res.status(404).json({ message: "El producto no existe en el inventario." });
+        }
+
+        // 3️⃣ Registrar en la tabla de entradas
+        await db.query(
+            `INSERT INTO entradas (producto_id, cantidad, fecha_vencimiento, lote, planta_id, numero_transporte, colaborador_id) 
+             VALUES (?, ?, ?, ?, ?, ?, ?)`,
+            [producto_id, cantidad, fecha_vencimiento, lote, planta_id, numero_transporte, colaborador_id]
+        );
+
+        // 4️⃣ Actualizar el stock en la tabla de productos
+        await db.query(
+            `UPDATE productos SET stock = stock + ? WHERE id = ?`,
+            [cantidad, producto_id]
+        );
+
+        console.log(`Producto registrado correctamente: +${cantidad} unidades al producto ${producto_id}`);
+
+        res.status(201).json({ message: "Producto registrado y stock actualizado correctamente." });
+
+    } catch (error) {
         console.error(error);
-        res.status(500).json({ message: "Error al registrar el producto" });
+        res.status(500).json({ message: "Error al registrar el producto." });
     }
-}
+};
+
 
 
 // Endpoint para crear un nuevo producto
